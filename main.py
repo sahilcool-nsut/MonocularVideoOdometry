@@ -10,7 +10,7 @@ pose_path = 'C:\\Users\\schaw\\OneDrive\\Documents\\SC Docs\\Sahil documents\\AR
 
 vo = MonocularVideoOdometery(img_path, pose_path)
 
-while(vo.checkNextFrame()):
+while(vo.hasNextFrame()):
 
     frame = vo.current_frame
 

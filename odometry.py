@@ -23,10 +23,26 @@ class MonocularVideoOdometery(object):
         self.id = 0
         self.n_features = 0
 
+        try:
+            if not all([".jpg" in x for x in os.listdir(img_file_path)]):
+                raise ValueError("img_file_path is not correct and does not exclusively png files")
+        except Exception as e:
+            print(e)
+            raise ValueError("The designated img_file_path does not exist, please check the path and try again")
+
+        try:
+            with open(pose_file_path) as f:
+                self.pose = f.readlines()
+        except Exception as e:
+            print(e)
+            raise ValueError("The pose_file_path is not valid or did not lead to a txt file")
+
         self.process_frame()
 
 
-    def checkNextFrame(self):
+    def hasNextFrame(self):
+        
+
         return self.id < len(os.listdir(self.file_path)) 
 
 
